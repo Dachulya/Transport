@@ -2,19 +2,19 @@ package Transport;
 
 public class Main {
     public static void main(String[] args) {
-        Car ladaGranda= new Car("","",-1," ",
+        Car ladaGranda= new Car("","","",-1,
                 0, "",true,"кузов",
                 187,
                 4,true, new Car.Key(true,true));
         Car AudiA8_50LTDI= new Car("Audi","A8  50 L TDI",
-                3,"чёрного цвета", 2020,
+                "чёрного цвета",3f, 2020,
                 "Германия",true,"кузов",187,
                 4,true,new Car.Key(true,true));
-        Car BMWZ8= new Car("BMW","Z8",3,"чёрного цвета",
+        Car BMWZ8= new Car("BMW","Z8","чёрного цвета",3,
                 2018,"Германия",true,"кузов",187,
                 4,true,new Car.Key(true,true));
-        Car KiaSportage= new Car("Kia","Sportage",
-                2.4f,"оранжевого цвета", 2018,
+        Car KiaSportage= new Car("Kia","Sportage","оранжевого цвета"
+                ,2.4f, 2018,
                 "Южная Корея",true,"кузов",187,
                 4,true,new Car.Key(true,true));
         Car HuindayAvante= new Car("красного цвета","Avante",
