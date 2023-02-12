@@ -1,6 +1,6 @@
 package Transport;
 
-public class Car {
+public class Car extends Transport {
     private String color;
     private String model;
     private String brend;
@@ -61,13 +61,7 @@ public class Car {
         return rubber;
     }
 
-    public void setColor(String color) {
-        if (color==null || color.isBlank()){
-        this.color = "default";}
-        else {
-            this.color=color;
-        }
-    }
+
 
     public void setEngineVolume(float engineVolume) {
         if (engineVolume<=0){
@@ -105,17 +99,14 @@ public class Car {
 
     public Car(String color, String model, String brend, float engineVolume, int dateRelease, String country,
                Boolean transmission, String bodyType, int registrationNumber, int numberOfSeats,
-               boolean typeOfRubber,Key key) {
-        this.color = divideIntoVariants(color,"white");
-        this.model = divideIntoVariants(model,"default");
-        this.brend = divideIntoVariants(brend,"default");
+               boolean typeOfRubber,Key key,int maxSpeed) {
+        super(color, model, brend,maxSpeed, dateRelease, country);
+
         if (engineVolume<=0){
             engineVolume=1.5f;
         }else {
             this.engineVolume=engineVolume;
         }
-        this.dateRelease = DivideIntoVariants(dateRelease,2000);
-        this.country = divideIntoVariants(country,"default");
         if (this.transmission=true){
             this.transmis="avtomat";}
         else{
@@ -131,9 +122,7 @@ public class Car {
         }
     }
 
-
-
-    public static String divideIntoVariants(String value,String defaultValue){
+    public static String divideIntoVariants(String value, String defaultValue){
         if (value==null || value.isBlank()){
             return defaultValue;
         }else {
@@ -159,7 +148,8 @@ public class Car {
                 "registrationNumber='" + getRegistrationNumber() + '\'' +
                 "numberOfSeats='" + getNumberOfSeats() + '\'' +
                 "typeOfRubber='" + getRubber() + '\'' +
-                "Key='" +Key.getIsNotKeyAccess()+'\''+Key.getIsRemoteEngineStart()+
+                "Key='" +Key.getIsNotKeyAccess()+'\''+Key.getIsRemoteEngineStart()+'\''+
+                "maxSpeed="+getMaxSpeed()+
                 '}';
     }/*transmission, String bodyType, int registrationNumber, int numberOfSeats, boolean typeOfRubber*/
 }
