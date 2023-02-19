@@ -12,6 +12,7 @@ public class D<D extends Bus> extends Driver{
         this.typeDriversLicense="D";
         Bus = bus;
     }
+
     public static String hey2(Bus bus) {
         return bus.getModel()+" "+bus.getBrend()+" управляется водителем "+fullName+"  и будет учавствоватьв гонках";
     }

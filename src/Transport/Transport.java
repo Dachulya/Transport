@@ -58,6 +58,7 @@ public abstract class Transport {
             this.color=color;
         }
     }
+
     public void setMaxSpeed(int maxSpeed) {
         if (this.maxSpeed<maxSpeed){
             this.maxSpeed = maxSpeed;}

@@ -17,6 +17,7 @@ public class B<B extends Truck> extends Driver {
         return truck.getModel()+" "+truck.getBrend()+" управляется водителем "+fullName+"  и будет учавствоватьв гонках";
     }
 
+
     @Override
     public String toString() {
         return "B{" +

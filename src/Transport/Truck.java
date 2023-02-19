@@ -9,6 +9,7 @@ public class Truck extends Transport implements Competing{
     public void PitStop() {
         System.out.println("Pit-Stop ");
     }
+
     @Override
     public void Stop() {
         System.out.println("Stopped ");

@@ -14,6 +14,7 @@ public class A<A extends Car> extends Driver{
 
     }
 
+
     public static String hey(Car car) {
         return car.getModel()+" "+car.getBrend()+" управляется водителем "+fullName+"  и будет учавствоватьв гонках";
     }
