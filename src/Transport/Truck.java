@@ -1,13 +1,9 @@
 package Transport;
 
-public class Bus extends Transport implements Competing{
-
-
-    public Bus(String color, String model, String brend, int maxSpeed, int dateRelease, String country, float engineCapasity) {
-        super(color, model, brend, maxSpeed, dateRelease, country,engineCapasity);
+public class Truck extends Transport implements Competing{
+    public Truck(String color, String model, String brend, int maxSpeed, int dateRelease, String country, float engineCapasity) {
+        super(color, model, brend, maxSpeed, dateRelease, country, engineCapasity);
     }
-
-
 
     @Override
     public void PitStop() {

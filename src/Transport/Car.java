@@ -1,13 +1,10 @@
 package Transport;
 
-public class Car extends Transport {
-    private String color;
-    private String model;
-    private String brend;
-    private float engineVolume;
-    private int dateRelease;
-    private String country;
+import Driver.Driver;
 
+public class Car extends Transport implements Competing {
+
+    private float engineVolume;
     private boolean transmission;
     private String transmis;
     private String bodyType;
@@ -17,30 +14,11 @@ public class Car extends Transport {
     private String rubber;
 
 
-    public String getModel() {
-        return model;
-    }
 
-    public String getBrend() {
-        return brend;
-    }
 
     public float getEngineVolume() {
         return engineVolume;
     }
-
-    public int getDateRelease() {
-        return dateRelease;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
     public String getTransmis() {
         return transmis;
     }
@@ -94,13 +72,12 @@ public class Car extends Transport {
         public static boolean getIsNotKeyAccess() {
             return notKeyAccess;
         }
-
     }
 
     public Car(String color, String model, String brend, float engineVolume, int dateRelease, String country,
                Boolean transmission, String bodyType, int registrationNumber, int numberOfSeats,
-               boolean typeOfRubber,Key key,int maxSpeed) {
-        super(color, model, brend,maxSpeed, dateRelease, country);
+               boolean typeOfRubber,Key key,int maxSpeed,float engineCapasity) {
+        super(color, model, brend,maxSpeed, dateRelease, country,engineCapasity);
 
         if (engineVolume<=0){
             engineVolume=1.5f;
@@ -121,6 +98,7 @@ public class Car extends Transport {
             this.rubber="winter";
         }
     }
+
 
     public static String divideIntoVariants(String value, String defaultValue){
         if (value==null || value.isBlank()){
@@ -149,7 +127,20 @@ public class Car extends Transport {
                 "numberOfSeats='" + getNumberOfSeats() + '\'' +
                 "typeOfRubber='" + getRubber() + '\'' +
                 "Key='" +Key.getIsNotKeyAccess()+'\''+Key.getIsRemoteEngineStart()+'\''+
-                "maxSpeed="+getMaxSpeed()+
+                "maxSpeed="+getMaxSpeed()+'\''+"engineCapacity="+getEngineCapasity()+
                 '}';
     }/*transmission, String bodyType, int registrationNumber, int numberOfSeats, boolean typeOfRubber*/
+
+    @Override
+    public void PitStop() {
+        System.out.println("Pit-Stop ");
+    }
+    @Override
+    public void Stop() {
+        System.out.println("Stopped ");
+    }@Override
+    public void Start() {
+        System.out.println("Started ");
+
+    }
 }
