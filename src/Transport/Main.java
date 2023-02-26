@@ -3,36 +3,39 @@ package Transport;
 import Driver.A;
 import Driver.B;
 import Driver.D;
+import Transport.Enim.BodyType;
+import Transport.Enim.CarriageCapacity;
 
 import static Driver.A.hey;
 import static Driver.B.hey1;
 import static Driver.D.hey2;
-
+import static Transport.Enim.CarriageCapacity.N1;
+import static Transport.Enim.CarriageCapacity.N3;
+import static Transport.Enim.PassengerCapacityBus.L;
 
 
 public class Main {
     public static void main(String[] args) {
         Car ladaGranda= new Car("","","",-1,
-                0, "",true,"кузов",
-                187,
-                4,true, new Car.Key(true,true),67,6.7f);
+                0, "",true ,187,
+                4,true, new Car.Key(true,true),67,6.7f, BodyType.MINIVAN);
         Car AudiA8_50LTDI= new Car("Audi","A8  50 L TDI",
                 "чёрного цвета",3f, 2020,
-                "Германия",true,"кузов",187,
-                4,true,new Car.Key(true,true),80,7.0f);
+                "Германия",true,187,
+                4,true,new Car.Key(true,true),80,7.0f,BodyType.PICKUP);
         Car BMWZ8= new Car("BMW","Z8","чёрного цвета",3,
-                2018,"Германия",true,"кузов",187,
-                4,true,new Car.Key(true,true),160,9.8f);
+                2018,"Германия",true,187,
+                4,true,new Car.Key(true,true),160,9.8f,BodyType.SEDAN);
         Car KiaSportage= new Car("Kia","Sportage","оранжевого цвета"
                 ,2.4f, 2018,
-                "Южная Корея",true,"кузов",187,
-                4,true,new Car.Key(true,true),180,9.7f);
+                "Южная Корея",true,187,
+                4,true,new Car.Key(true,true),180,9.7f,BodyType.VAN);
         Car HuindayAvante= new Car("красного цвета","Avante",
                 "Huinday",1.6f, 2016,
-                "Южная Корея",true,"кузов",187,
-                4,true,new Car.Key(true,true),170,2.4f);
+                "Южная Корея",true,187,
+                4,true,new Car.Key(true,true),170,2.4f,BodyType.HATCBACK);
 
-        /*System.out.println(ladaGranda);
+        System.out.println(ladaGranda);/*
         System.out.println(AudiA8_50LTDI);
         System.out.println(BMWZ8);
         System.out.println(KiaSportage);
@@ -41,10 +44,13 @@ public class Main {
         HuindayAvante.setMaxSpeed(180);
         /*System.out.println(HuindayAvante.getMaxSpeed());*/
 
-        Bus bus1= new Bus("red","tera","bmv",70,2000,"Chiny",6.8f);
+        Bus bus1= new Bus("red","tera","bmv",70,2000,"Chiny",6.8f,L);
         /*System.out.println(bus1);*/
-        Truck truck1=new Truck("blue","truck","lada",60,1990,"Rossia",10.2f);
-        Truck truck2=new Truck("black","truck","Mercedes",80,2010,"Germaniay",20.3f);
+        Truck truck1=new Truck("blue","truck","lada",60,1990,"Rossia",10.2f,N1);
+        Truck truck2=new Truck("black","truck","Mercedes",80,2010,"Germaniay",20.3f, N3);
+        System.out.println(bus1);
+        System.out.println(truck1);
+
 
         //bus1.Stop();
         A driver1=new A(true,34,"Пётр Сергеевич","", HuindayAvante);
@@ -57,9 +63,11 @@ public class Main {
         driver1.Stop(driver1);
         driver1.RefuelCar(driver1);*/
         //System.out.println(driver1);
-        System.out.println(hey(HuindayAvante));
+        /*System.out.println(hey(HuindayAvante));
         System.out.println(hey1(truck1));
-        System.out.println(hey2(bus1));
+        System.out.println(hey2(bus1));*/
+
+
 
     }
 }

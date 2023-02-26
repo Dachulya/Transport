@@ -1,14 +1,16 @@
 package Transport;
 
 import Driver.Driver;
+import Transport.Enim.BodyType;
 
 
 public class Car extends Transport implements Competing {
 
+    private  final BodyType bodyType;
     private float engineVolume;
     private boolean transmission;
     private String transmis;
-    private String bodyType;
+
     private int registrationNumber;
     private int numberOfSeats;
     private boolean typeOfRubber;
@@ -24,9 +26,7 @@ public class Car extends Transport implements Competing {
         return transmis;
     }
 
-    public String getBodyType() {
-        return bodyType;
-    }
+
 
     public int getRegistrationNumber() {
         return registrationNumber;
@@ -76,8 +76,8 @@ public class Car extends Transport implements Competing {
     }
 
     public Car(String color, String model, String brend, float engineVolume, int dateRelease, String country,
-               Boolean transmission, String bodyType, int registrationNumber, int numberOfSeats,
-               boolean typeOfRubber,Key key,int maxSpeed,float engineCapasity) {
+               Boolean transmission, int registrationNumber, int numberOfSeats,
+               boolean typeOfRubber,Key key,int maxSpeed,float engineCapasity,BodyType bodyType) {
         super(color, model, brend,maxSpeed, dateRelease, country,engineCapasity);
 
         if (engineVolume<=0){
@@ -90,7 +90,7 @@ public class Car extends Transport implements Competing {
         else{
             this.transmis="mex";
             }
-        this.bodyType = divideIntoVariants(bodyType,"default");
+
         this.registrationNumber = DivideIntoVariants(registrationNumber,0000);
         this.numberOfSeats = DivideIntoVariants(numberOfSeats,4);;
         if (this.typeOfRubber=true){
@@ -98,6 +98,7 @@ public class Car extends Transport implements Competing {
         else{
             this.rubber="winter";
         }
+        this.bodyType=bodyType;
     }
 
 
@@ -122,13 +123,13 @@ public class Car extends Transport implements Competing {
                 ", engineVolume=" + getEngineVolume() +
                 ", dateRelease=" + getDateRelease() +
                 ", country='" + getCountry() + '\'' +
-                "transmission='" + getTransmis() + '\'' +
-                "bodyType='" + getBodyType() + '\'' +
+                "transmission='" + getTransmis() + '\''
+                 + '\'' +
                 "registrationNumber='" + getRegistrationNumber() + '\'' +
                 "numberOfSeats='" + getNumberOfSeats() + '\'' +
                 "typeOfRubber='" + getRubber() + '\'' +
                 "Key='" +Key.getIsNotKeyAccess()+'\''+Key.getIsRemoteEngineStart()+'\''+
-                "maxSpeed="+getMaxSpeed()+'\''+"engineCapacity="+getEngineCapasity()+
+                "maxSpeed="+getMaxSpeed()+'\''+"engineCapacity="+getEngineCapasity()+bodyType+
                 '}';
     }/*transmission, String bodyType, int registrationNumber, int numberOfSeats, boolean typeOfRubber*/
 
@@ -139,9 +140,11 @@ public class Car extends Transport implements Competing {
     @Override
     public void Stop() {
         System.out.println("Stopped ");
-    }@Override
+    }
+    @Override
     public void Start() {
         System.out.println("Started ");
 
     }
+
 }
