@@ -1,9 +1,12 @@
 package Transport;
 
+import Transport.exceptions.TransportTypeException;
+
 import static Transport.Car.DivideIntoVariants;
 import static Transport.Car.divideIntoVariants;
 
 public abstract class Transport {
+    private boolean diagnosticsPassed;
     private String color;
     private String model;
     private String brend;
@@ -69,6 +72,20 @@ public abstract class Transport {
     public  void stop(){
         System.out.println("Stop "+"");
     }
+
+    public void setDiagnisticsPassed(boolean diagnisticsPassed){
+        this.diagnosticsPassed=diagnisticsPassed;
+    }
+    public boolean checkTransportNeedService(){
+        try {
+            passDiagnostics();}
+        catch (TransportTypeException e){
+                return false;}
+        return true;
+
+    }
+    public boolean isDiagnosticsPassed(){return diagnosticsPassed;}
+    abstract boolean passDiagnostics() throws TransportTypeException;
 
 
     @Override

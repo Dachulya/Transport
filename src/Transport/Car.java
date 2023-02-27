@@ -2,6 +2,7 @@ package Transport;
 
 import Driver.Driver;
 import Transport.Enim.BodyType;
+import Transport.exceptions.TransportTypeException;
 
 
 public class Car extends Transport implements Competing {
@@ -99,6 +100,10 @@ public class Car extends Transport implements Competing {
             this.rubber="winter";
         }
         this.bodyType=bodyType;
+    }
+    @Override
+    boolean passDiagnostics() {
+        return this.isDiagnosticsPassed();
     }
 
 
