@@ -3,6 +3,7 @@ package Transport;
 import Transport.Enim.BodyType;
 import Transport.Enim.PassengerCapacityBus;
 import Transport.Enim.PassengerCapacityBus;
+import Transport.exceptions.TransportTypeException;
 
 public class Bus extends Transport implements Competing{
 
@@ -15,16 +16,14 @@ public class Bus extends Transport implements Competing{
     }
 
     @Override
+    boolean passDiagnostics() throws TransportTypeException {
+        throw new TransportTypeException("автобусы диагностике не подлежат");
+    }
+
+    @Override
     public String toString() {
-        return "Bus{"  +
-                "color='" + getColor() + '\'' +
-                ", model='" + getModel() + '\'' +
-                ", brend='" + getBrend() + '\'' +
-                ", maxSpeed=" + getMaxSpeed() +
-                ", dateRelease=" + getDateRelease() +
-                ", country='" + getCountry() + '\'' +
-                "engineCapasity= "+getEngineCapasity()+
-                '}'+
+        return "Bus{"  +super.toString()+
+
                 "passengerCapacityBus=" + passengerCapacityBus +
                 '}';
     }

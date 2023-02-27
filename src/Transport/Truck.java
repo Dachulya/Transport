@@ -2,6 +2,7 @@ package Transport;
 
 import Transport.Enim.CarriageCapacity;
 import Transport.Enim.PassengerCapacityBus;
+import Transport.exceptions.TransportTypeException;
 
 public class Truck extends Transport implements Competing{
     private  final CarriageCapacity carriageCapacity;
@@ -11,16 +12,13 @@ public class Truck extends Transport implements Competing{
         this.carriageCapacity=carriageCapacity;
     }
     @Override
+    boolean passDiagnostics() {
+        return this.isDiagnosticsPassed();
+    }
+    @Override
     public String toString() {
-        return "Truck{"  +
-                "color='" + getColor() + '\'' +
-                ", model='" + getModel() + '\'' +
-                ", brend='" + getBrend() + '\'' +
-                ", maxSpeed=" + getMaxSpeed() +
-                ", dateRelease=" + getDateRelease() +
-                ", country='" + getCountry() + '\'' +
-                "engineCapasity= "+getEngineCapasity()+
-                '}'+
+        return "Truck{"
+                +super.toString()+
                 "CarriageCapacity="  +carriageCapacity+
                 '}';
     }
