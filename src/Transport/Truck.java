@@ -1,15 +1,16 @@
 package Transport;
 
 import Transport.Enim.CarriageCapacity;
-import Transport.Enim.PassengerCapacityBus;
-import Transport.exceptions.TransportTypeException;
+import mechanic.Mechanic;
 
 public class Truck extends Transport implements Competing{
     private  final CarriageCapacity carriageCapacity;
+    private final Mechanic mechanic;
     public Truck(String color, String model, String brend, int maxSpeed, int dateRelease, String country,
-                 float engineCapasity, CarriageCapacity carriageCapacity) {
+                 float engineCapasity, CarriageCapacity carriageCapacity, Mechanic mechanic) {
         super(color, model, brend, maxSpeed, dateRelease, country, engineCapasity);
         this.carriageCapacity=carriageCapacity;
+        this.mechanic=mechanic;
     }
     @Override
     boolean passDiagnostics() {
@@ -19,7 +20,7 @@ public class Truck extends Transport implements Competing{
     public String toString() {
         return "Truck{"
                 +super.toString()+
-                "CarriageCapacity="  +carriageCapacity+
+                "CarriageCapacity="  +carriageCapacity+","+mechanic+
                 '}';
     }
 

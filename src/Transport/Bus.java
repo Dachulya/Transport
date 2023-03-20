@@ -1,18 +1,20 @@
 package Transport;
 
-import Transport.Enim.BodyType;
-import Transport.Enim.PassengerCapacityBus;
 import Transport.Enim.PassengerCapacityBus;
 import Transport.exceptions.TransportTypeException;
+import mechanic.Mechanic;
 
 public class Bus extends Transport implements Competing{
 
     private  final PassengerCapacityBus passengerCapacityBus;
+    private final Mechanic mechanic;
 
-    public Bus(String color, String model, String brend, int maxSpeed, int dateRelease, String country, float engineCapasity,
-               PassengerCapacityBus passengerCapacityBus) {
+    public Bus(String color, String model, String brend, int maxSpeed, int dateRelease,
+               String country, float engineCapasity,
+               PassengerCapacityBus passengerCapacityBus, Mechanic mechanic) {
         super(color, model, brend, maxSpeed, dateRelease, country,engineCapasity);
         this.passengerCapacityBus=passengerCapacityBus;
+        this.mechanic=mechanic;
     }
 
     @Override
@@ -24,7 +26,7 @@ public class Bus extends Transport implements Competing{
     public String toString() {
         return "Bus{"  +super.toString()+
 
-                "passengerCapacityBus=" + passengerCapacityBus +
+                "passengerCapacityBus=" + passengerCapacityBus +","+mechanic+
                 '}';
     }
 

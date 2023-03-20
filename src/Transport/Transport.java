@@ -1,9 +1,17 @@
 package Transport;
 
+import Driver.Driver;
 import Transport.exceptions.TransportTypeException;
+import mechanic.Mechanic;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import static Transport.Car.DivideIntoVariants;
 import static Transport.Car.divideIntoVariants;
+
 
 public abstract class Transport {
     private boolean diagnosticsPassed;
@@ -41,6 +49,12 @@ public abstract class Transport {
     public String getCountry() {
         return country;
     }
+    
+    private final List<Driver> driverlist=new ArrayList<>();
+    private final List<Transport> transports=new ArrayList<>();
+    private final List<Mechanic> mechanics=new ArrayList<>();
+
+
 
     public Transport(String color, String model,
                      String brend, int maxSpeed,
@@ -52,7 +66,13 @@ public abstract class Transport {
         this.dateRelease = DivideIntoVariants(dateRelease,2000);
         this.country = divideIntoVariants(country,"default");
         this.engineCapasity=engineCapasity;
+
+        for (Transport transport: transports){
+            transports.add(transport);
+        }
+        Map<Transport,List<Mechanic>> map=new HashMap<>();
     }
+
 
     public void setColor(String color) {
         if (color==null || color.isBlank()){
