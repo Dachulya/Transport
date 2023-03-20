@@ -1,8 +1,7 @@
 package Transport;
 
-import Driver.Driver;
 import Transport.Enim.BodyType;
-import Transport.exceptions.TransportTypeException;
+import mechanic.Mechanic;
 
 
 public class Car extends Transport implements Competing {
@@ -16,6 +15,7 @@ public class Car extends Transport implements Competing {
     private int numberOfSeats;
     private boolean typeOfRubber;
     private String rubber;
+    private  final Mechanic mechanic;
 
 
 
@@ -78,8 +78,10 @@ public class Car extends Transport implements Competing {
 
     public Car(String color, String model, String brend, float engineVolume, int dateRelease, String country,
                Boolean transmission, int registrationNumber, int numberOfSeats,
-               boolean typeOfRubber,Key key,int maxSpeed,float engineCapasity,BodyType bodyType) {
+               boolean typeOfRubber, Key key, int maxSpeed, float engineCapasity,
+               BodyType bodyType, Mechanic mechanic) {
         super(color, model, brend,maxSpeed, dateRelease, country,engineCapasity);
+        this.mechanic = mechanic;
 
         if (engineVolume<=0){
             engineVolume=1.5f;
@@ -134,8 +136,8 @@ public class Car extends Transport implements Competing {
                 "numberOfSeats='" + getNumberOfSeats() + '\'' +
                 "typeOfRubber='" + getRubber() + '\'' +
                 "Key='" +Key.getIsNotKeyAccess()+'\''+Key.getIsRemoteEngineStart()+'\''+
-                "maxSpeed="+getMaxSpeed()+'\''+"engineCapacity="+getEngineCapasity()+bodyType+
-                '}';
+                "maxSpeed="+getMaxSpeed()+'\''+"engineCapacity="+getEngineCapasity()+bodyType
+                +","+mechanic+'}';
     }/*transmission, String bodyType, int registrationNumber, int numberOfSeats, boolean typeOfRubber*/
 
     @Override
