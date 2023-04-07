@@ -3,6 +3,9 @@ package Transport;
 import Transport.Enim.BodyType;
 import mechanic.Mechanic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Car extends Transport implements Competing {
 
@@ -15,7 +18,7 @@ public class Car extends Transport implements Competing {
     private int numberOfSeats;
     private boolean typeOfRubber;
     private String rubber;
-    private  final Mechanic mechanic;
+    private ArrayList<Mechanic> mechanics;
 
 
 
@@ -76,12 +79,17 @@ public class Car extends Transport implements Competing {
         }
     }
 
+    public ArrayList<Mechanic> getMechanics() {
+        return mechanics;
+    }
+
     public Car(String color, String model, String brend, float engineVolume, int dateRelease, String country,
                Boolean transmission, int registrationNumber, int numberOfSeats,
                boolean typeOfRubber, Key key, int maxSpeed, float engineCapasity,
-               BodyType bodyType, Mechanic mechanic) {
+               BodyType bodyType, Mechanic...mechanics) {
         super(color, model, brend,maxSpeed, dateRelease, country,engineCapasity);
-        this.mechanic = mechanic;
+
+        this.mechanics = new ArrayList<>(List.of(mechanics));
 
         if (engineVolume<=0){
             engineVolume=1.5f;
@@ -137,7 +145,7 @@ public class Car extends Transport implements Competing {
                 "typeOfRubber='" + getRubber() + '\'' +
                 "Key='" +Key.getIsNotKeyAccess()+'\''+Key.getIsRemoteEngineStart()+'\''+
                 "maxSpeed="+getMaxSpeed()+'\''+"engineCapacity="+getEngineCapasity()+bodyType
-                +","+mechanic+'}';
+                +",";
     }/*transmission, String bodyType, int registrationNumber, int numberOfSeats, boolean typeOfRubber*/
 
     @Override
