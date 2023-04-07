@@ -3,12 +3,12 @@ package Transport;
 import Driver.A;
 import Driver.B;
 import Driver.D;
+import Driver.Driver;
 import Transport.Enim.BodyType;
+import Transport.exceptions.CollectionIsEmptyExceptions;
 import mechanic.Mechanic;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static Transport.Enim.CarriageCapacity.N1;
 import static Transport.Enim.CarriageCapacity.N3;
@@ -44,7 +44,7 @@ public class Main {
                 "Huinday", 1.6f, 2016,
                 "Южная Корея", true, 187,
                 4, true, new Car.Key(true, true),
-                170, 2.4f, BodyType.HATCBACK, mechanic2,mechanic1);
+                170, 2.4f, BodyType.HATCBACK, mechanic2, mechanic1);
 
 
         HuindayAvante.setMaxSpeed(180);
@@ -65,9 +65,29 @@ public class Main {
         B driver3 = new B<>(true, 25, "Павел Вениаминович", "", truck2);
         D driver4 = new D<>(true, 7, "Ангелина Анатольевна", "", bus1);
 
-        printMechanicsForCar(
-                createHashMapCarWithMechanic(HuindayAvante,BMWZ8,AudiA8_50LTDI)
-        );
+        try {
+            printSet(
+                    createSetWithDrivers(driver1, driver2, driver4, driver1));
+        } catch (CollectionIsEmptyExceptions ourCustomException) {
+            System.out.println(ourCustomException.getMessage());
+        }
+
+    }
+
+    public static Set<Driver> createSetWithDrivers(Driver... drivers) {
+        Set<Driver> driverSet = new HashSet<>();
+        for (Driver driver : drivers) {
+            driverSet.add(driver);
+        }
+        return driverSet;
+    }
+
+    public static void printSet(Set<Driver> driverSet) {
+        if (driverSet.isEmpty()) throw new CollectionIsEmptyExceptions("множество принятое этим методом пустое");
+        Iterator<Driver> driverIterator = driverSet.iterator();
+        while (driverIterator.hasNext()) {
+            System.out.println(driverIterator.next());
+        }
     }
 
     public static HashMap<Car, ArrayList<Mechanic>> createHashMapCarWithMechanic(Car... cars) {
@@ -77,10 +97,11 @@ public class Main {
         }
         return hashMap;
     }
-    public static void printMechanicsForCar(HashMap<Car, ArrayList<Mechanic>> hashMap){
-        for (Map.Entry<Car,ArrayList<Mechanic>> entry:hashMap.entrySet()){
-            System.out.println(entry.getKey()+" :");
-            for (Mechanic mechanic:entry.getValue()) {
+
+    public static void printMechanicsForCar(HashMap<Car, ArrayList<Mechanic>> hashMap) {
+        for (Map.Entry<Car, ArrayList<Mechanic>> entry : hashMap.entrySet()) {
+            System.out.println(entry.getKey() + " :");
+            for (Mechanic mechanic : entry.getValue()) {
                 System.out.println(mechanic);
             }
         }
