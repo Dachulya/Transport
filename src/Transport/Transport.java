@@ -4,10 +4,7 @@ import Driver.Driver;
 import Transport.exceptions.TransportTypeException;
 import mechanic.Mechanic;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static Transport.Car.DivideIntoVariants;
 import static Transport.Car.divideIntoVariants;
@@ -51,7 +48,6 @@ public abstract class Transport {
     }
     
     private final List<Driver> driverlist=new ArrayList<>();
-    private final List<Transport> transports=new ArrayList<>();
     private final List<Mechanic> mechanics=new ArrayList<>();
 
 
@@ -67,10 +63,7 @@ public abstract class Transport {
         this.country = divideIntoVariants(country,"default");
         this.engineCapasity=engineCapasity;
 
-        for (Transport transport: transports){
-            transports.add(transport);
-        }
-        Map<Transport,List<Mechanic>> map=new HashMap<>();
+
     }
 
 
@@ -119,5 +112,19 @@ public abstract class Transport {
                 ", country='" + country + '\'' +
                 "engineCapasity= "+engineCapasity+
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport transport = (Transport) o;
+        return Float.compare(transport.engineCapasity, engineCapasity) == 0 && Objects.equals(color, transport.color) &&
+                Objects.equals(model, transport.model) && Objects.equals(brend, transport.brend);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(color, model, brend, engineCapasity);
     }
 }
